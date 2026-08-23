@@ -1,9 +1,11 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background-color: color-mix(in oklch, var(--field) 88%, transparent);
   width: 100%;
   z-index: 2;
   position: fixed;
+  color: var(--ink);
+  border-block-end: 1px solid color-mix(in oklch, var(--ink) 16%, transparent);
 }
 
 header nav {
@@ -30,9 +32,10 @@ header nav[aria-expanded='true'] {
   min-height: 100dvh;
 }
 
-@media (width >= 900px) {
+@media (width >= 56.25em) {
   header .nav-wrapper {
     position: relative;
+    background-color: var(--field);
   }
 
   header nav {
@@ -67,12 +70,13 @@ header nav .nav-hamburger {
 }
 
 header nav .nav-hamburger button {
-  height: 22px;
+  height: 44px;
+  width: 44px;
   margin: 0;
   border: 0;
   border-radius: 0;
   padding: 0;
-  background-color: var(--background-color);
+  background-color: transparent;
   color: inherit;
   overflow: initial;
   text-overflow: initial;
@@ -132,7 +136,7 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
   transform: rotate(-45deg);
 }
 
-@media (width >= 900px) {
+@media (width >= 56.25em) {
   header nav .nav-hamburger {
     display: none;
     visibility: hidden;
@@ -142,10 +146,13 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
 /* brand */
 header .nav-brand {
   grid-area: brand;
-  flex-basis: 128px;
-  font-size: var(--heading-font-size-s);
+  flex-basis: auto;
+  font-family: var(--heading-font-family);
+  font-size: var(--type-kicker);
   font-weight: 700;
+  letter-spacing: 0.16em;
   line-height: 1;
+  text-transform: uppercase;
 }
 
 header nav .nav-brand img {
@@ -170,11 +177,14 @@ header nav[aria-expanded='true'] .nav-sections {
 header nav .nav-sections ul {
   list-style: none;
   padding-left: 0;
-  font-size: var(--body-font-size-s);
+  font-family: var(--heading-font-family);
+  font-size: var(--type-kicker);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 header nav .nav-sections ul > li {
-  font-weight: 500;
+  font-weight: 700;
 }
 
 header nav .nav-sections ul > li > ul {
@@ -185,7 +195,7 @@ header nav .nav-sections ul > li > ul > li {
   font-weight: 400;
 }
 
-@media (width >= 900px) {
+@media (width >= 56.25em) {
   header nav .nav-sections {
     display: block;
     visibility: visible;

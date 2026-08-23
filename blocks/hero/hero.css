@@ -1,37 +1,71 @@
 .hero-container .hero-wrapper {
-  max-width: unset;
+  max-width: none;
   padding: 0;
 }
 
 .hero {
+  --hero-scrim: color-mix(in oklch, var(--sodium) 72%, transparent);
+
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  display: grid;
+  align-content: end;
+  min-height: 100svh;
+  padding: calc(var(--nav-height) + var(--space-l)) var(--space-m) var(--space-l);
+  color: var(--ice);
+  isolation: isolate;
+}
+
+.hero > div {
+  position: relative;
+  z-index: 1;
+  max-width: 48rem;
 }
 
 .hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+  margin: 0;
+  max-width: none;
+  color: var(--ice);
+  font-size: var(--type-display);
+  text-wrap: balance;
 }
 
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+.hero p {
+  max-width: 36rem;
+  margin-block: var(--space-s) 0;
+  font-size: var(--body-font-size-m);
 }
 
+.hero picture,
 .hero img {
-  object-fit: cover;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: 62% 70%;
 }
 
-@media (width >= 900px) {
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, var(--sodium) 0%, var(--hero-scrim) 42%, transparent 72%),
+    linear-gradient(to right, color-mix(in oklch, var(--sodium) 55%, transparent), transparent 46%);
+}
+
+@media (width >= 56.25em) {
   .hero {
-    padding: 40px 32px;
+    padding: calc(var(--nav-height) + var(--space-l)) var(--space-l) var(--space-l);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .hero::after {
+    background: color-mix(in oklch, var(--sodium) 62%, transparent);
   }
 }

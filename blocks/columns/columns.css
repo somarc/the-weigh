@@ -19,15 +19,61 @@
   display: block;
 }
 
-@media (width >= 900px) {
+@media (width >= 56.25em) {
   .columns > div {
     align-items: center;
     flex-direction: unset;
-    gap: 24px;
+    gap: var(--space-m);
   }
 
   .columns > div > div {
     flex: 1;
     order: unset;
+  }
+}
+
+.columns.ledger {
+  container-type: inline-size;
+  container-name: ledger;
+}
+
+.columns.ledger > div {
+  gap: 0;
+  border-block: 1px solid color-mix(in oklch, var(--ink) 22%, transparent);
+}
+
+.columns.ledger > div > div {
+  padding-block: var(--space-m);
+  padding-inline: var(--space-s);
+}
+
+.columns.ledger > div > div + div {
+  border-block-start: 1px solid color-mix(in oklch, var(--ink) 18%, transparent);
+}
+
+.columns.ledger h2,
+.columns.ledger h3 {
+  margin: 0;
+  font-size: var(--type-display);
+  line-height: 0.9;
+}
+
+.columns.ledger p {
+  margin-block: var(--space-s) 0;
+  font-family: var(--label-font-family);
+  font-size: var(--type-kicker);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@container ledger (inline-size >= 40rem) {
+  .columns.ledger > div {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .columns.ledger > div > div + div {
+    border-block-start: 0;
+    border-inline-start: 1px solid color-mix(in oklch, var(--ink) 18%, transparent);
   }
 }

@@ -11,33 +11,52 @@
  */
 
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  /* primitive — sodium weigh deck + ice dossier. not observatory, not void cinema */
+  --sodium: oklch(18% 0.03 70deg);
+  --ice: oklch(94% 0.012 95deg);
+  --steel: oklch(72% 0.02 100deg);
+  --tape: oklch(82% 0.16 95deg);
 
-  /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
+  /* semantic */
+  --field: var(--ice);
+  --ink: var(--sodium);
+  --material: var(--tape);
+  --background-color: var(--field);
+  --light-color: color-mix(in oklch, var(--ice) 88%, var(--steel));
+  --dark-color: color-mix(in oklch, var(--sodium) 70%, black);
+  --text-color: var(--ink);
+  --link-color: var(--ink);
+  --link-hover-color: color-mix(in oklch, var(--ink) 70%, var(--tape));
+
+  /* type: condensed customs + news serif. not Iowan+Avenir */
+  --body-font-family: georgia, "times new roman", serif;
   --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --label-font-family: ui-monospace, "cascadia code", menlo, monospace;
+  --type-display: clamp(2.75rem, 1.4rem + 6vw, 6.5rem);
+  --type-title: clamp(1.75rem, 1.2rem + 2.2vw, 3rem);
+  --type-kicker: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
 
   /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  --body-font-size-m: 1.25rem;
+  --body-font-size-s: 1.0625rem;
+  --body-font-size-xs: 0.9375rem;
 
   /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  --heading-font-size-xxl: var(--type-display);
+  --heading-font-size-xl: var(--type-title);
+  --heading-font-size-l: clamp(1.375rem, 1.1rem + 1vw, 1.75rem);
+  --heading-font-size-m: 1.375rem;
+  --heading-font-size-s: 1.25rem;
+  --heading-font-size-xs: 1.125rem;
+
+  /* space */
+  --space-s: clamp(0.75rem, 0.6rem + 0.6vw, 1rem);
+  --space-m: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --space-l: clamp(1.75rem, 1.2rem + 2vw, 3rem);
+  --measure: 42rem;
 
   /* nav height */
-  --nav-height: 64px;
+  --nav-height: 4rem;
 }
 
 /* fallback fonts */
@@ -53,31 +72,33 @@
   src: local('Arial');
 }
 
-@media (width >= 900px) {
+@media (width >= 56.25em) {
   :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
+    --body-font-size-m: 1.125rem;
+    --body-font-size-s: 1rem;
+    --body-font-size-xs: 0.875rem;
   }
 }
 
 body {
   display: none;
   margin: 0;
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: var(--field);
+  color: var(--ink);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  line-height: 1.55;
+}
+
+body.weigh {
+  --field: var(--sodium);
+  --ink: var(--ice);
+  --background-color: var(--field);
+  --text-color: var(--ink);
+  --light-color: color-mix(in oklch, var(--sodium) 82%, var(--ice));
+  --dark-color: color-mix(in oklch, var(--ice) 18%, var(--sodium));
+  --link-color: var(--ice);
+  --link-hover-color: var(--tape);
 }
 
 body.appear {
@@ -104,12 +125,13 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin-block: 0.8em 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
-  scroll-margin: 40px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  scroll-margin: 2.5rem;
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
@@ -170,6 +192,11 @@ p.button-wrapper {
   margin: 12px 0;
 }
 
+:focus-visible {
+  outline: 2px solid var(--material);
+  outline-offset: 3px;
+}
+
 a.button:any-link,
 button.button {
   box-sizing: border-box;
@@ -178,13 +205,16 @@ button.button {
   justify-content: center;
   max-width: 100%;
   margin: 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
-  font: inherit;
-  font-weight: 500;
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  padding: 0.55em 1.1em;
+  font-family: var(--heading-font-family);
+  font-size: var(--type-kicker);
+  font-weight: 700;
+  letter-spacing: 0.08em;
   line-height: 1.25;
   text-decoration: none;
+  text-transform: uppercase;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -297,29 +327,93 @@ main img {
 
 /* sections */
 main > .section {
-  margin: 40px 0;
+  margin-block: var(--space-l);
 }
 
 main > .section > div {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 24px;
+  max-width: 75rem;
+  margin-inline: auto;
+  padding-inline: var(--space-m);
 }
 
 main > .section:first-of-type {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
-@media (width >= 900px) {
+@media (width >= 56.25em) {
   main > .section > div {
-    padding: 0 32px;
+    padding-inline: var(--space-l);
   }
 }
 
-/* section metadata */
+/* section metadata — authored Style classes */
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
-  padding: 40px 0;
+  padding-block: var(--space-l);
+}
+
+/* weigh deck owns the LCP still. type captions; it does not cage */
+main > .section.weigh-deck {
+  margin: 0;
+  padding: 0;
+  background-color: var(--sodium);
+  color: var(--ice);
+}
+
+main > .section.weigh-deck > div {
+  max-width: none;
+  padding: 0;
+}
+
+/* dossier is the inner-page weather: ice field, steel rules */
+main > .section.dossier {
+  margin: 0;
+  padding-block: var(--space-l);
+  border-block-end: 1px solid color-mix(in oklch, var(--ink) 14%, transparent);
+}
+
+main > .section.dossier > div {
+  max-width: var(--measure);
+}
+
+main > .section.dossier.wide > div {
+  max-width: 75rem;
+}
+
+main > .section.kicker p:first-child,
+main > .section.dossier > div > p:first-child em {
+  font-family: var(--label-font-family);
+  font-size: var(--type-kicker);
+  font-style: normal;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html :where(*, *::before, *::after) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --tape: oklch(78% 0.2 95deg);
+  }
+
+  a.button:any-link,
+  button.button {
+    border-width: 3px;
+  }
+}
+
+@media (forced-colors: active) {
+  a.button:any-link,
+  button.button {
+    border: 2px solid ButtonText;
+  }
 }
