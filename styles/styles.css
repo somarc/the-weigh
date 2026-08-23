@@ -101,6 +101,14 @@ body.weigh {
   --link-hover-color: var(--tape);
 }
 
+body.appear {
+  display: block;
+}
+
+header {
+  height: var(--nav-height);
+}
+
 /* weigh deck: header overlays the scale so the first viewport is the object */
 body.weigh header {
   height: 0;
@@ -108,14 +116,6 @@ body.weigh header {
 
 body.weigh header .nav-wrapper {
   position: fixed;
-}
-
-body.appear {
-  display: block;
-}
-
-header {
-  height: var(--nav-height);
 }
 
 header .header,
