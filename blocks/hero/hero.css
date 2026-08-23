@@ -20,13 +20,9 @@
   max-width: 48rem;
 }
 
-.hero h1,
-.hero h1 + p {
+.hero h1 {
   position: relative;
   z-index: 1;
-}
-
-.hero h1 {
   margin: 0;
   max-width: none;
   color: var(--ice);
@@ -38,6 +34,11 @@
   max-width: 36rem;
   margin-block: var(--space-s) 0;
   font-size: var(--body-font-size-m);
+}
+
+.hero h1 + p {
+  position: relative;
+  z-index: 1;
 }
 
 .hero picture,
