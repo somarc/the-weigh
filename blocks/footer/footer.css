@@ -22,7 +22,7 @@ footer .footer p + p {
   margin-block-start: var(--space-s);
 }
 
-@media (width >= 56.25em) {
+@media (width >= 900px) {
   footer .footer > div {
     padding-inline: var(--space-l);
   }

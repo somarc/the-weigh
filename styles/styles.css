@@ -72,7 +72,7 @@
   src: local('Arial');
 }
 
-@media (width >= 56.25em) {
+@media (width >= 900px) {
   :root {
     --body-font-size-m: 1.125rem;
     --body-font-size-s: 1rem;
@@ -173,10 +173,6 @@ pre {
   white-space: pre;
 }
 
-main > div {
-  margin: 40px 16px;
-}
-
 input,
 textarea,
 select,
@@ -184,16 +180,17 @@ button {
   font: inherit;
 }
 
-/* links */
+/* links — ink and link color are the same token; underline is the distinguish */
 a:any-link {
   color: var(--link-color);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
   overflow-wrap: break-word;
 }
 
-a:hover {
+a:hover,
+a:focus-visible {
   color: var(--link-hover-color);
-  text-decoration: underline;
 }
 
 /* buttons */
@@ -349,7 +346,7 @@ main > .section:first-of-type {
   margin-block-start: 0;
 }
 
-@media (width >= 56.25em) {
+@media (width >= 900px) {
   main > .section > div {
     padding-inline: var(--space-l);
   }
@@ -391,8 +388,7 @@ main > .section.dossier.wide > div {
   max-width: 75rem;
 }
 
-main > .section.kicker p:first-child,
-main > .section.dossier > div > p:first-child em {
+.section.dossier .default-content-wrapper > p:first-child em {
   font-family: var(--label-font-family);
   font-size: var(--type-kicker);
   font-style: normal;

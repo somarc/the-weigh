@@ -19,7 +19,7 @@
   display: block;
 }
 
-@media (width >= 56.25em) {
+@media (width >= 900px) {
   .columns > div {
     align-items: center;
     flex-direction: unset;
@@ -30,11 +30,16 @@
     flex: 1;
     order: unset;
   }
-}
 
-.columns.ledger {
-  container-type: inline-size;
-  container-name: ledger;
+  .columns.ledger > div {
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .columns.ledger > div > div + div {
+    border-block-start: 0;
+    border-inline-start: 1px solid color-mix(in oklch, var(--ink) 18%, transparent);
+  }
 }
 
 .columns.ledger > div {
@@ -64,16 +69,4 @@
   font-size: var(--type-kicker);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-@container ledger (inline-size >= 40rem) {
-  .columns.ledger > div {
-    flex-direction: row;
-    align-items: stretch;
-  }
-
-  .columns.ledger > div > div + div {
-    border-block-start: 0;
-    border-inline-start: 1px solid color-mix(in oklch, var(--ink) 18%, transparent);
-  }
 }
