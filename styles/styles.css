@@ -373,6 +373,19 @@ main > .section.weigh-deck > div {
   padding: 0;
 }
 
+/* inner-page load plate — same bleed contract, not a second 100svh weigh-deck */
+main > .section.plate {
+  margin: 0;
+  padding: 0;
+  background-color: var(--sodium);
+  color: var(--ice);
+}
+
+main > .section.plate > div {
+  max-width: none;
+  padding: 0;
+}
+
 /* dossier is the inner-page weather: ice field, steel rules */
 main > .section.dossier {
   margin: 0;

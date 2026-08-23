@@ -15,6 +15,15 @@
   max-width: 48rem;
 }
 
+.hero.load {
+  min-height: 85svh;
+}
+
+.hero.load picture,
+.hero.load img {
+  object-position: center;
+}
+
 .hero h1 {
   position: relative;
   z-index: 1;
