@@ -10,15 +10,20 @@
   display: grid;
   align-content: end;
   min-height: 100svh;
+  overflow: hidden;
   padding: calc(var(--nav-height) + var(--space-l)) var(--space-m) var(--space-l);
   color: var(--ice);
   isolation: isolate;
 }
 
 .hero > div {
+  max-width: 48rem;
+}
+
+.hero h1,
+.hero h1 + p {
   position: relative;
   z-index: 1;
-  max-width: 48rem;
 }
 
 .hero h1 {
