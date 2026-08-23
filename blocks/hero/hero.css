@@ -19,11 +19,6 @@
   min-height: 85svh;
 }
 
-.hero.load picture,
-.hero.load img {
-  object-position: center;
-}
-
 .hero h1 {
   position: relative;
   z-index: 1;
@@ -59,6 +54,11 @@
   height: 100%;
   object-fit: cover;
   object-position: 62% 70%;
+}
+
+.hero.load picture,
+.hero.load img {
+  object-position: center;
 }
 
 .hero::after {
